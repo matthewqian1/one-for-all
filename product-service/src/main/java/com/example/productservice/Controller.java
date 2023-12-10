@@ -1,7 +1,9 @@
 package com.example.productservice;
 
 import com.google.gson.Gson;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +26,11 @@ public class Controller {
     @PostMapping("/add")
     public void addProduct(@RequestBody Product product) {
         service.addProduct(product);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable String id) {
+        return ResponseEntity.ok(service.getProduct(id));
     }
 
     @GetMapping("/byCategory/{category}")
