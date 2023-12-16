@@ -30,12 +30,18 @@ public class Controller {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable String id) {
+        System.out.println(id);
         return ResponseEntity.ok(service.getProduct(id));
     }
 
     @GetMapping("/byCategory/{category}")
     public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam Category category) {
         return ResponseEntity.ok(service.getProductsByCategory(category));
+    }
+
+    @GetMapping("/getImages")
+    public ResponseEntity<List<String>> getProductImages(@RequestParam String[] ids) {
+        return ResponseEntity.ok(service.getImages(ids));
     }
 
 

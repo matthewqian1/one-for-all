@@ -1,0 +1,25 @@
+"1":
+  name: "Red T Shirt"
+  description: "This is a T shirt that is red"
+  price: 98.25
+  image: "1.jpg"
+"2":
+  name: "Outwear Salvador Leather Jacket"
+  description: "Our premium crafted products are renowned for their signature durability and are designed to look good with time. Our expert coating enables for our products to be waterproof, scratch resistant, and abrasion proof."
+  price: 135.00
+  image: "2.png"
+"3":
+  name: "Wool Sweater"
+  description: "Cut to a relaxed fit for easy-wear appeal, this mock-neck sweater is knitted in a lightweight wool blend with a ribbed structure at the back of the sleeves"
+  price: 150.00
+  image: "3.png"
+"4":
+  name: "Axe Flannel Jacket"
+  description: "to redefine what was possible from motorcycle clothing by delivering products loaded with innovation, high-quality components and fabrics, at everyday prices"
+  price: 110.00
+  image: "4.png"
+"5":
+  name: "Army Offroad Jacket"
+  description: "Whether for commuting or pure adventure, our all-new Range collection has been built from the pegs up to ensure that your ride continues beyond the expected, year-round"
+  price: 380.00
+  image: "5.png"
