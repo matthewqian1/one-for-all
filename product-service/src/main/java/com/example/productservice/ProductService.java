@@ -54,19 +54,8 @@ public class ProductService {
                 log.error("Error loading products", exception);
             }
         });
-        System.out.println();
     }
 
-    public void addProduct(Product product) {
-        try {
-            String id = generateId();
-            product.setId(id);
-            log.info("Adding new product {}", mapper.writeValueAsString(product));
-            products.put(id, product);
-        } catch (Exception e) {
-
-        }
-    }
 
     public Product getProduct(String id) {
         Product product = products.get(id);
@@ -88,6 +77,10 @@ public class ProductService {
 
     public List<String> getImages(String[] ids) {
         return Stream.of(ids).map(id -> products.containsKey(id) ? products.get(id).getImage() : "").collect(Collectors.toList());
+    }
+
+    public List<String> getCategories() {
+        return Arrays.stream(Category.values()).map(Category::getName).toList();
     }
 
 }

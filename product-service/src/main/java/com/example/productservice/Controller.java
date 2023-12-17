@@ -23,11 +23,6 @@ public class Controller {
         return ResponseEntity.ok(service.getAllProducts());
     }
 
-    @PostMapping("/add")
-    public void addProduct(@RequestBody Product product) {
-        service.addProduct(product);
-    }
-
     @GetMapping("/get/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable String id) {
         System.out.println(id);
@@ -42,6 +37,11 @@ public class Controller {
     @GetMapping("/getImages")
     public ResponseEntity<List<String>> getProductImages(@RequestParam String[] ids) {
         return ResponseEntity.ok(service.getImages(ids));
+    }
+
+    @GetMapping("/getCategories")
+    public ResponseEntity<List<String>> getCategories() {
+        return ResponseEntity.ok(service.getCategories());
     }
 
 
