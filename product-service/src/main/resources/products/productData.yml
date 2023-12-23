@@ -2,29 +2,59 @@
   name: "Red T Shirt"
   description: "This is a T shirt that is red"
   price: 30.00
-  image: "1.jpg"
   category: "T shirt"
+  colour: "Red"
 "2":
   name: "Outwear Salvador Leather Jacket"
   description: "Our premium crafted products are renowned for their signature durability and are designed to look good with time. Our expert coating enables for our products to be waterproof, scratch resistant, and abrasion proof."
   price: 135.00
-  image: "2.png"
   category: "Jacket"
+  colour: "Brown"
 "3":
   name: "Wool Sweater"
   description: "Cut to a relaxed fit for easy-wear appeal, this mock-neck sweater is knitted in a lightweight wool blend with a ribbed structure at the back of the sleeves"
   price: 150.00
-  image: "3.png"
   category: "Sweater"
+  colour: "Brown"
 "4":
   name: "Axe Flannel Jacket"
   description: "to redefine what was possible from motorcycle clothing by delivering products loaded with innovation, high-quality components and fabrics, at everyday prices"
   price: 110.00
-  image: "4.png"
   category: "Jacket"
+  colour: "Red"
 "5":
   name: "Army Offroad Jacket"
   description: "Whether for commuting or pure adventure, our all-new Range collection has been built from the pegs up to ensure that your ride continues beyond the expected, year-round"
   price: 380.00
-  image: "5.png"
   category: "Jacket"
+  colour: "Green"
+"6":
+  name: "Black T Shirt"
+  description: "This is a T shirt that is black"
+  price: 30.00
+  category: "T shirt"
+  colour: "Black"
+"7":
+  name: "Blue T Shirt"
+  description: "This is a T shirt that is blue"
+  price: 30.00
+  category: "T shirt"
+  colour: "Blue"
+"8":
+  name: "Black Moto Leather Jacket"
+  description: "This Black Moto Leather Jacket is expertly handcrafted from full-grain lamb hide for a luxurious feel. The tailored fit and lightweight design allows you to move freely in comfort, all year round"
+  price: 300.00
+  category: "Jacket"
+  colour: "Black"
+"9":
+  name: "Represent Mohair Sweater"
+  description: "Taking the fashion world by storm, Manchester-based streetwear brand Represent presents this Mohair sweater. The perfect leisure piece, the sweat is slightly oversized and crafted in a heavyweight blend."
+  price: 220.00
+  category: "Sweater"
+  colour: "Blue"
+"10":
+  name: "Red Rebel Varsity Jacket"
+  description: "Casual and comfort are the name of the game with this varsity-style jacket. A bright red and white combo, this jacket is ideal for weekend strolls, streetwear and catching up with friends for a drink."
+  price: 120.00
+  category: "Jacket"
+  colour: "Red"

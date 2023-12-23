@@ -14,5 +14,6 @@ public class Product {
     Category category;
     Double price;
     String image;
+    Colour colour;
     List<Review> reviews;
 }

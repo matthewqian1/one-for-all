@@ -43,7 +43,7 @@ public class ProductService {
                 String key = e.getKey();
                 Product product = mapper.convertValue(e.getValue(), Product.class);
                 product.setId(key);
-                InputStream imageStream = this.getClass().getClassLoader().getResourceAsStream("products/images/" + product.getImage());
+                InputStream imageStream = this.getClass().getClassLoader().getResourceAsStream(String.format("products/images/%s.png",key));
                 byte[] fileContent = ByteStreams.toByteArray(imageStream);
                 String encodedString = Base64
                         .getEncoder()
@@ -58,8 +58,6 @@ public class ProductService {
 
 
     public Product getProduct(String id) {
-        Product product = products.get(id);
-
         return products.get(id);
     }
 
@@ -81,6 +79,10 @@ public class ProductService {
 
     public List<String> getCategories() {
         return Arrays.stream(Category.values()).map(Category::getName).toList();
+    }
+
+    public List<String> getColours() {
+        return Arrays.stream(Colour.values()).map(Colour::getName).toList();
     }
 
 }

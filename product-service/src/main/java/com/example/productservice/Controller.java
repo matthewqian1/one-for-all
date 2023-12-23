@@ -25,7 +25,6 @@ public class Controller {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable String id) {
-        System.out.println(id);
         return ResponseEntity.ok(service.getProduct(id));
     }
 
@@ -44,5 +43,9 @@ public class Controller {
         return ResponseEntity.ok(service.getCategories());
     }
 
+    @GetMapping("/getColours")
+    public ResponseEntity<List<String>> getColours() {
+        return ResponseEntity.ok(service.getColours());
+    }
 
 }
