@@ -1,4 +1,5 @@
-package com.example.productservice;
+package org.example;
+
 
 import lombok.Data;
 
@@ -8,6 +9,6 @@ import java.time.LocalDate;
 public class Review {
     int rating;
     int username;
-    int comment;
+    String comment;
     LocalDate date;
 }

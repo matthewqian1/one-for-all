@@ -1,6 +1,7 @@
 package com.example.productservice;
 
 import lombok.Data;
+import org.example.Review;
 
 import java.util.List;
 

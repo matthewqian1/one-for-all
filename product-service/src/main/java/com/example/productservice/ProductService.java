@@ -38,12 +38,11 @@ public class ProductService {
                 .getResourceAsStream("products/productData.yml");
         Map<String, Object> obj = yaml.load(inputStream);
 
-        obj.entrySet().forEach(e -> {
+        obj.forEach((key, value) -> {
             try {
-                String key = e.getKey();
-                Product product = mapper.convertValue(e.getValue(), Product.class);
+                Product product = mapper.convertValue(value, Product.class);
                 product.setId(key);
-                InputStream imageStream = this.getClass().getClassLoader().getResourceAsStream(String.format("products/images/%s.png",key));
+                InputStream imageStream = this.getClass().getClassLoader().getResourceAsStream(String.format("products/images/%s.png", key));
                 byte[] fileContent = ByteStreams.toByteArray(imageStream);
                 String encodedString = Base64
                         .getEncoder()
