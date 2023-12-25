@@ -17,4 +17,5 @@ public class Product {
     String image;
     Colour colour;
     List<Review> reviews;
+    double averageRating;
 }

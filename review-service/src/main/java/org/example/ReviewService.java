@@ -1,18 +1,21 @@
 package org.example;
 
 import jakarta.annotation.PostConstruct;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class ReviewService {
 
+    private final int MAX_REVIEWS = 5;
+
+    private final Random random = new Random();
     List<String> users = List.of("Shopaholic123",
             "DigitalShopper22",
             "TrendyExplorer",
@@ -27,7 +30,7 @@ public class ReviewService {
     List<String> goodComments;
     List<String> badComments;
 
-    Map<String, Review> reviews;
+    Map<String, List<Review>> reviews;
 
     @PostConstruct
     public void load() throws IOException {
@@ -40,7 +43,36 @@ public class ReviewService {
         InputStream inputStream2 = this.getClass()
                 .getClassLoader()
                 .getResourceAsStream("sampleReviews/bad.yml");
-        badComments = yaml.load(inputStream1);
+        badComments = yaml.load(inputStream2);
+    }
+
+    public List<Review> getProductReviews(String id) {
+        if (reviews.containsKey(id)) {
+            return reviews.get(id);
+        }
+
+        List<Review> reviewList = new ArrayList<>();
+
+        for (int i = 0; i < MAX_REVIEWS; i++) {
+            boolean isGoodReview = getRandomNumber(0,2) == 0;
+            String comment = isGoodReview ? goodComments.get(getRandomNumber(0, goodComments.size() - 1)) : badComments.get(getRandomNumber(0, badComments.size() - 1));
+            int rating = isGoodReview ? getRandomNumber(4,6) : getRandomNumber(0, 3);
+            reviewList.add(Review.builder()
+                            .comment(comment)
+                            .rating(rating)
+                            .username(users.get(getRandomNumber(0, users.size() - 1)))
+                            .date(LocalDate.now().minusDays(i))
+                    .build());
+        }
+
+        reviews.put(id, reviewList);
+
+        return reviewList;
+    }
+
+    private int getRandomNumber(int min, int max) {
+
+        return random.nextInt(max - min) + min;
     }
 
 

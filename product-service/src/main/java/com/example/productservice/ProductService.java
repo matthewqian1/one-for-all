@@ -9,9 +9,14 @@ import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import jakarta.annotation.PostConstruct;
+import org.apache.coyote.Response;
+import org.example.Review;
+import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
@@ -25,6 +30,12 @@ import java.util.stream.Stream;
 @Service
 @Slf4j
 public class ProductService {
+
+    @Value("${review.service.url}")
+    String reviewUrl;
+
+    RestTemplate template = new RestTemplate();
+
     Map<String, Product> products = new HashMap<>();
 
     ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -55,8 +66,16 @@ public class ProductService {
         });
     }
 
+    @PostConstruct
+    public void test() {
+        getProduct("2");
+    }
+
 
     public Product getProduct(String id) {
+        Product product = products.get(id);
+        ResponseEntity<List> reviewResponse = template.getForEntity(String.format("%s/%s", reviewUrl, id), List.class);
+        product.setReviews(reviewResponse.getBody());
         return products.get(id);
     }
 
