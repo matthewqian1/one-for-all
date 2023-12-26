@@ -66,21 +66,18 @@ public class ProductService {
         });
     }
 
-    @PostConstruct
-    public void test() {
-        getProduct("2");
-    }
-
-
     public Product getProduct(String id) {
         Product product = products.get(id);
-        ResponseEntity<List> reviewResponse = template.getForEntity(String.format("%s/%s", reviewUrl, id), List.class);
+        ResponseEntity<List> reviewResponse = template.getForEntity(String.format("%s/productReviews/%s", reviewUrl, id), List.class);
         product.setReviews(reviewResponse.getBody());
         return products.get(id);
     }
 
     public List<Product> getAllProducts() {
-        return products.values().stream().toList();
+        return products.values().stream().map(p -> {
+            p.setAverageRating(template.getForEntity(String.format("%s/productRating/%s", reviewUrl, p.getId()), Double.class).getBody());
+           return p;
+        }).toList();
     }
 
     public List<Product> getProductsByCategory(Category category) {

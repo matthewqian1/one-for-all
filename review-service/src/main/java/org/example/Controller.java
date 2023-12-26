@@ -26,5 +26,10 @@ public class Controller {
         return ResponseEntity.ok(service.getProductReviews(id));
     }
 
+    @GetMapping("/productRating/{id}")
+    public ResponseEntity<Double> getProductRating(@PathVariable String id) {
+        return ResponseEntity.ok(service.getProductRating(id));
+    }
+
 
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ReviewService {
@@ -68,6 +69,12 @@ public class ReviewService {
         reviews.put(id, reviewList);
 
         return reviewList;
+    }
+
+    public double getProductRating(String id) {
+        List<Review> reviews = getProductReviews(id);
+        return (double) reviews.stream().map(Review::getRating).reduce(0, Integer::sum) / reviews.size();
+
     }
 
     private int getRandomNumber(int min, int max) {
