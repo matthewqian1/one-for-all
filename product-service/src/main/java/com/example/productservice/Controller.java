@@ -48,4 +48,8 @@ public class Controller {
         return ResponseEntity.ok(service.getColours());
     }
 
+    @GetMapping("/getProductNames")
+    public ResponseEntity<List<String>> getNames() {
+        return ResponseEntity.ok(service.getNames());
+    }
 }

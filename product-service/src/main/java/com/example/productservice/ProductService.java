@@ -100,4 +100,8 @@ public class ProductService {
         return Arrays.stream(Colour.values()).map(Colour::getName).toList();
     }
 
+    public List<String> getNames() {
+        return products.values().stream().map(Product::getName).collect(Collectors.toList());
+    }
+
 }
