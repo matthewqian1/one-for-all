@@ -20,30 +20,6 @@ public class ApiService {
     Gson gson = new Gson();
     String url = "https://api.openai.com/v1/chat/completions";
 
-    @PostConstruct
-    public void test() {
-        ChatCompletionRequest request = ChatCompletionRequest.builder()
-                .model("gpt-3.5-turbo")
-                .messages(List.of(ChatCompletionMessage.builder()
-                                .role("system")
-                                .content("You are a helpful ecommerce assistant. Generate sample responses to user queries")
-                        .build(),
-                        ChatCompletionMessage.builder()
-                                .role("user")
-                                .content("I have a complaint abuot a product how can I reach customer support")
-                                .build()
-                        ))
-                .build();
-        HttpHeaders headers = new HttpHeaders();
-        String openAiKey = System.getenv().get("CHAT_GPT_API_KEY");
-        headers.add("Authorization", "Bearer " + openAiKey);
-        headers.add("Content-Type", "application/json");
-        HttpEntity<String> r = new HttpEntity<>(gson.toJson(request), headers);
-        ResponseEntity<String> responseEntity = template.exchange(URI.create(url), HttpMethod.POST, new HttpEntity<>(gson.toJson(request), headers), String.class);
-        String reply = gson.fromJson(responseEntity.getBody(), ChatCompletionResponse.class).getChoices().get(0).getMessage().getContent();
-        System.out.println();
-    }
-
     private HttpEntity<String> generateRequest(UserQuery query) {
         ChatCompletionRequest request = ChatCompletionRequest.builder()
                 .model("gpt-3.5-turbo")
